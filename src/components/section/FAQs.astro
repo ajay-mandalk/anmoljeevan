@@ -30,35 +30,35 @@ const icons = {
         </svg>`
 };
 ---
-<section class="bg-white text-black w-full">
+<section id="FAQs" class="flex flex-col justify-center items-center px-16 py-16 w-full bg-white dark:bg-gray-900 max-md:px-5 max-md:max-w-full">
     <Container>
       <div class=" max-w-screen-xl px-4 py-2 sm:px-4 sm:py-6 lg:px-4 lg:py-8">
         <div class="max-w-xl">
-          <h2 class="mb-2 flex text-center text-4xl font-bold sm:text-5xl">Frequently Asked Questions</h2>
-          <p class="mb-10 text-center text-gray-500">
-            Anmol Jeevan Foundation in best nasha mukti kendra in delhi NCR, it is
+          <h2 class="text-4xl font-bold sm:text-5xl text-neutral-800 dark:text-white">Frequently Asked Questions</h2>
+          <p class="mt-4 text-lg text-neutral-800 dark:text-gray-300">
+            Anmol Jeevan Foundation is the best nasha mukti kendra in delhi NCR, it is
             started by Mr. Dulal Mandal in 2018. We treat both men and women,
-            aged 18 and older, from all around the world.
+            aged 18 and older, from all around the Dehli NCR
           </p>
         </div>
-{faqs.map((faq, index) => (
-  <div class=" border-[#00ff00]">
-    <button 
-      data-accordion-button={index + 1}
-      class="w-full flex items-center justify-between px-5 h-[55px] border-2 border-[#00ff00] text-gray-800"
-    >
-      <span>{faq.question}</span>
-      <span id={`icon-${index + 1}`} class="font-semibold text-slate-900 transition-transform duration-300">
-        <Fragment set:html={icons.plus} />
-      </span>
-    </button>
-    <div id={`content-${index + 1}`} class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-      <div class="pb-5 text-sm text-slate-600">
-        {faq.answer}
-      </div>
-    </div>
-  </div>
-))}
+        {faqs.map((faq, index) => (
+          <div class="border-[#00ff00]">
+            <button 
+              data-accordion-button={index + 1}
+              class="w-full flex items-center justify-between px-5 h-[55px] border-2 border-[#00ff00] text-neutral-800 dark:text-white"
+            >
+              <span>{faq.question}</span>
+              <span id={`icon-${index + 1}`} class="font-semibold text-neutral-800 dark:text-white transition-transform duration-300">
+                <Fragment set:html={icons.plus} />
+              </span>
+            </button>
+            <div id={`content-${index + 1}`} class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="pb-5 text-sm text-neutral-800 dark:text-gray-300">
+                {faq.answer}
+              </div>
+            </div>
+          </div>
+        ))}
 </section>
 
 <script>

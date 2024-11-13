@@ -2,63 +2,112 @@
 import { AnimatedBanner } from "@/components/shared/AnimatedBanner";
 ---
 
-<header
-  id="announcement-banner"
-  class="mt-0 relative overflow-hidden bg-gradient-to-r from-background-gradient-from to-background-gradient-to text-text-color"
->
-  <div class="absolute inset-0 overflow-hidden">
-
-    <AnimatedBanner client:load />
-  </div>
-  <div class="max-w-7xl mx-auto px-4 text-center"></div>
+<header class="relative w-full">
+  <!-- Announcement Banner -->
   <div
-    class="relative flex min-h-[44px] w-screen items-center justify-between bg-[#2DF8C5]/80 text-[#013437] md:items-center md:justify-between md:gap-6 md:py-0 md:text-center md:text-[18px]
-    before:absolute before:inset-0 before:-z-[1]
-    before:bg-[linear-gradient(90deg,#488cfb,#29dbbc,#ddf505,#ff9f0e,#e440bb,#655adc,#488cfb)]
-    before:bg-[length:200%_auto] before:animate-borderAnimation"
+    id="announcement-banner"
+    class="relative overflow-hidden bg-gradient-to-r from-background-gradient-from to-background-gradient-to"
   >
-    <div
-      class="max-w-7xl mx-auto px-4 text-center font-rubik text-[18px] flex items-center justify-center w-full"
-    >
-      <p>
-        निःशुल्क परामर्श प्राप्त करें &nbsp;<a href="tel:+918285362996"><strong
-          class="underline animate-blink justify-around">Call Now</strong
-        ></a>
-      </p>
+    <div class="absolute inset-0 overflow-hidden">
+      <AnimatedBanner client:load />
     </div>
-    <button
-      class="hover:opacity-75 transition-opacity"
-      aria-label="Close banner"
-      onclick="document.getElementById('announcement-banner').style.display = 'none'"
+
+    <!-- Main Banner Content -->
+    <div
+      class="relative flex min-h-[60px] w-full items-center justify-between bg-[#2DF8C5]/80 backdrop-blur-sm
+      before:absolute before:inset-0 before:-z-[1]
+      before:bg-[linear-gradient(90deg,#488cfb,#29dbbc,#ddf505,#ff9f0e,#e440bb,#655adc,#488cfb)]
+      before:bg-[length:200%_auto] before:animate-borderAnimation"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
+      <!-- Left Side - Emergency Contact -->
+      <div class="flex-1 flex justify-start pl-4">
+        <div class="flex items-center gap-2 text-[#013437]">
+          <svg 
+            class="w-5 h-5 animate-pulse" 
+            fill="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 14H5c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"/>
+          </svg>
+          <span class="text-sm font-medium">24/7 Emergency Support</span>
+        </div>
+      </div>
+
+
+
+      <!-- Center - Phone Number -->
+      <div class="flex-1 flex justify-center">
+        <div class="group">
+          <a href="tel:+918285362996" class="flex items-center gap-2 text-[#013437] hover:opacity-80">
+            <svg 
+              class="w-5 h-5" 
+              fill="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+            </svg>
+            <span class="font-medium">+91 8285362996</span>
+
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Side - Close Button -->
+      <div class="flex-1 flex justify-end pr-4">
+        <button
+          class="p-2 hover:bg-[#013437]/10 rounded-full transition-colors duration-300"
+          aria-label="Close banner"
+          onclick="document.getElementById('announcement-banner').style.display = 'none'"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-[#013437]"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 </header>
 
 <style>
-  @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
+  /* Enhance the border animation */
+  @keyframes borderAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
-  .animate-blink {
-    animation: blink 2s infinite;
-    animation-delay: 4s;
+
+  .animate-borderAnimation {
+    animation: borderAnimation 8s linear infinite;
+  }
+
+  /* Enhance the bounce animation */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25%); }
+  }
+
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
+
+  /* Enhance the pulse animation */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 </style>

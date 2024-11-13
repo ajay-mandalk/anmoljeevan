@@ -1,0 +1,84 @@
+---
+import Container from "../shared/Container.astro";
+---
+
+<section class="bg-gray-900 text-white w-full feature-grid-bg">
+  <Container>
+    <div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+      <div class="max-w-xl">
+        <h2 class="font-bold text-[#00ff00]">Our Features</h2>
+        <h2 class="text-4xl font-bold sm:text-5xl">
+          Anmol Jeevan Foundation <br />Nasha Mukti Kendra in Delhi
+        </h2>
+        <p>
+          Anmol Jeevan Foundation in best nasha mukti kendra in delhi NCR, it is
+          started by Mr. Dulal Mandal in 2018. We treat both men and women, aged
+          18 and older, from all around the world.
+        </p>
+      </div>
+
+      <!-- Card 1 -->
+      <div
+        class="mt-10 flex items-center justify-between px-6 h-[125px] rounded-lg border-2 border-[#00ff00] hover:bg-lime-500 text-white"
+      >
+        <div class="flex items-center gap-4">
+          <!-- Added gap-4 for spacing -->
+          <img
+            src="./icons/Self_improvement.svg.svg"
+            alt="Protect"
+            class="ex_po w-16 h-16"
+          />
+          <div class="flex flex-col items-start">
+            <p class="text-base font-bold">Yoga Meditation</p>
+            <p class="text-sm">
+              Yoga is a mind and body practice. Various styles of yoga combine
+              physical postures, breathing techniques, and meditation or
+              relaxation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Card 2 -->
+      <div
+        class="mt-2 flex items-center justify-between px-6 h-[125px] rounded-lg border-2 border-[#00ff00] hover:bg-lime-500 text-white"
+      >
+        <div class="flex items-center gap-4">
+          <!-- Added gap-4 for spacing -->
+          <img
+            src="./icons/Nutrition.svg.svg"
+            alt="Growth"
+            class="ex_po w-16 h-16"
+          />
+
+          <div class="flex flex-col items-start">
+            <p class="text-base font-bold">Nutritious, Balanced Diet</p>
+            <p class="text-sm">
+              A nutritious diet is essential for maintaining good health. It
+              provides the body with the necessary nutrients, vitamins, and
+              minerals to function properly.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Card 3 -->
+      <div
+        class="mt-2 flex items-center justify-between px-6 h-[125px] rounded-lg border-2 border-[#00ff00] hover:bg-lime-500 text-white"
+      >
+        <div class="flex items-center gap-4">
+          <img src="./icons/diagnosis.svg" alt="Saving" class="w-16 h-16" />
+          <div class="flex flex-col items-start">
+            <p class="text-base font-bold">Dual Diagnosis Treatment</p>
+            <p class="text-sm">
+              is a comprehensive approach to treating addiction and mental
+              health issues simultaneously. It recognizes that addiction often
+              coexists with underlying mental health conditions, such as
+              depression, anxiety, or trauma.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

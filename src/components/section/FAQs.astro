@@ -1,0 +1,93 @@
+---
+import Container from "../shared/Container.astro";
+// FAQ Data
+const faqs = [
+  {
+    question: "How Much Does Rehab Cost?",
+    answer: "Anmol Jeevan Foundation Nahsa Mukti Centre is very reasonable and we support patients financially because we understand that many patients have already undergone treatments at various centers without success."
+  },
+  {
+    question: "What is the duration of the treatment?",
+    answer: "The duration of the treatment depends on the severity of the addiction. It can range from 30 days to 90 days."
+  },
+  {
+    question: "What Does a Rehab Treatment Include?",
+    answer: "The treatment process involves a combination of detoxification, counseling, and therapy. The duration of the treatment depends on the severity of the addiction."
+  },
+  {
+    question: "Are Private Rooms Available?",
+    answer: "Yes, private rooms are available at Anmol Jeevan Foundation Nahsa Mukti Centre. We understand the importance of privacy and comfort for our patients."
+  }
+];
+
+// SVG Icons
+const icons = {
+  plus: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+          <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+        </svg>`,
+  minus: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+          <path d="M3.75 7.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Z" />
+        </svg>`
+};
+---
+<section class="bg-white text-black w-full">
+    <Container>
+      <div class=" max-w-screen-xl px-4 py-2 sm:px-4 sm:py-6 lg:px-4 lg:py-8">
+        <div class="max-w-xl">
+          <h2 class="mb-2 flex text-center text-4xl font-bold sm:text-5xl">Frequently Asked Questions</h2>
+          <p class="mb-10 text-center text-gray-500">
+            Anmol Jeevan Foundation in best nasha mukti kendra in delhi NCR, it is
+            started by Mr. Dulal Mandal in 2018. We treat both men and women,
+            aged 18 and older, from all around the world.
+          </p>
+        </div>
+{faqs.map((faq, index) => (
+  <div class=" border-[#00ff00]">
+    <button 
+      data-accordion-button={index + 1}
+      class="w-full flex items-center justify-between px-5 h-[55px] border-2 border-[#00ff00] text-gray-800"
+    >
+      <span>{faq.question}</span>
+      <span id={`icon-${index + 1}`} class="font-semibold text-slate-900 transition-transform duration-300">
+        <Fragment set:html={icons.plus} />
+      </span>
+    </button>
+    <div id={`content-${index + 1}`} class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+      <div class="pb-5 text-sm text-slate-600">
+        {faq.answer}
+      </div>
+    </div>
+  </div>
+))}
+</section>
+
+<script>
+      document.querySelectorAll('[data-accordion-button]').forEach(button => {
+    button.addEventListener('click', () => {
+      const index = button.getAttribute('data-accordion-button');
+      toggleAccordion(Number(index));
+    });
+  });
+  function toggleAccordion(index: number) {
+    const content = document.getElementById(`content-${index}`);
+    const icon = document.getElementById(`icon-${index}`);
+    if (!content || !icon) return;
+    
+    const icons = {
+      minus: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+              <path d="M3.75 7.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Z" />
+            </svg>`,
+      plus: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+              <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+            </svg>`
+    };
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      content.style.maxHeight = '0';
+      icon.innerHTML = icons.plus;
+    } else {
+      content.style.maxHeight = content.scrollHeight + 'px';
+      icon.innerHTML = icons.minus;
+    }
+  }
+</script>

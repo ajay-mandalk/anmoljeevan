@@ -1,0 +1,145 @@
+<section
+  class="flex flex-col justify-center items-center px-16 py-2 mb-20 w-full bg-slate-50 dark:bg-neutral-800 max-md:px-5 max-md:max-w-full"
+>
+  <div class="w-full max-w-[1124px] max-md:max-w-full">
+    <div class="flex gap-5 max-md:flex-col">
+      <div class="flex flex-col ml-5 w-[67%] max-md:ml-0 max-md:w-full">
+        <div
+          class="flex flex-col items-start w-full max-md:mt-10 max-md:max-w-full"
+        >
+          <h2
+            class="text-5xl font-semibold text-neutral-800 max-md:max-w-full max-md:text-4xl"
+          >
+            Why Choose Anmol Jeevan Foundation?
+          </h2>
+          <p
+            class="self-stretch mt-4 text-2xl font-light leading-10 text-neutral-800 max-md:max-w-full"
+          >
+            It is human nature to follow the things that surrounds us so if the
+            surrounding or environment is good and positive then automatically
+            one is on the right path <br />
+          </p>
+          <div class="mt-8 max-w-full w-[678px]">
+            <div class="flex gap-5 max-md:flex-col">
+              <div class="flex flex-col w-[22%] max-md:ml-0 max-md:w-full">
+                <div
+                  class="flex flex-col grow text-center whitespace-nowrap max-md:mt-10 hover:scale-105 transition-transform duration-300"
+                >
+                  <p
+                    class="self-center text-4xl font-semibold text-neutral-800"
+                  >
+                    Pickup
+                  </p>
+                  <p
+                    class="mt-1.5 text-xl font-light text-neutral-800 text-opacity-80"
+                  >
+                    From Anywhere <br /> In Delhi NCR
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col ml-5 w-[19%] max-md:ml-0 max-md:w-full">
+                <div
+                  class="flex flex-col grow text-center max-md:mt-10 hover:scale-105 transition-transform duration-300"
+                >
+                  <p
+                    class="self-center text-4xl font-semibold text-neutral-800"
+                  >
+                    24/7
+                  </p>
+                  <p
+                    class="mt-1.5 text-xl font-light text-neutral-800 text-opacity-80"
+                  >
+                    Support <br /> Available
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col ml-5 w-[28%] max-md:ml-0 max-md:w-full">
+                <div
+                  class="flex flex-col grow text-center max-md:mt-10 hover:scale-105 transition-transform duration-300"
+                >
+                  <p
+                    id="speed-counter"
+                    class="text-4xl font-semibold text-neutral-800"
+                  >
+                    0%
+                  </p>
+                  <p
+                    class="mt-1.5 text-xl font-light text-neutral-800 text-opacity-80"
+                  >
+                    Recovery <br /> Rate    
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col ml-5 w-[31%] max-md:ml-0 max-md:w-full">
+                <div
+                  class="flex flex-col grow text-center max-md:mt-10 hover:scale-105 transition-transform duration-300"
+                >
+                  <p
+                    id="time-counter"
+                    class="text-4xl font-semibold text-neutral-800"
+                  >
+                    0
+                  </p>
+                  <p
+                    class="mt-1.5 text-xl font-light text-neutral-800 text-opacity-80"
+                  >
+                    Years <br /> Experience
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function animateValue(
+          id: string,
+          start: number,
+          end: number,
+          duration: number,
+          suffix: string = ""
+        ) {
+          let startTimestamp: number | null = null;
+          const element = document.getElementById(id);
+          if (!element) return;
+
+          function step(timestamp: number) {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min(
+              (timestamp - startTimestamp) / duration,
+              1
+            );
+            const current = Math.floor(progress * (end - start) + start);
+            element!.textContent = `${current}${suffix}`; // Added non-null assertion operator (!)
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            }
+          }
+
+          window.requestAnimationFrame(step);
+        }
+
+        // Intersection Observer setup
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateValue("speed-counter", 0, 95, 2000, "%");
+                animateValue("time-counter", 0, 10, 2000, "Yrs");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        // Observe elements
+        const speedCounter = document.getElementById("speed-counter");
+        const timeCounter = document.getElementById("time-counter");
+        if (speedCounter) observer.observe(speedCounter);
+        if (timeCounter) observer.observe(timeCounter);
+      </script>
+    </div>
+  </div>
+</section>

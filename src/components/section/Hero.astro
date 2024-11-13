@@ -1,0 +1,129 @@
+---
+import Container from "@/components/shared/Container.astro";
+import BtnLink from "@/components/shared/BtnLink.astro";
+const backgroundImages = [
+  "./asset/about-1.png",
+  "./asset/about-2.png",
+  "./asset/about-3.png",
+  // Add more images as needed
+];
+
+---
+
+<section
+  class="relative min-h-[750px] pt-32 pb-20 max-md:pb-12 bg-body overflow-hidden"
+>
+  {/* Background images */}
+  {
+    backgroundImages.map((img, index) => (
+      <img
+        src={img}
+        alt={`Background drone image ${index + 1}`}
+        class={`object-cover absolute inset-0 size-full brightness-[0.85] dark:opacity-50 opacity-25 transition-opacity duration-1000 slide-image`}
+        loading={index === 0 ? "eager" : "lazy"}
+      />
+    ))
+  }
+
+  <Container>
+    {
+      /* Added z-index and relative positioning to ensure content appears above images */
+    }
+    <div class="relative z-10 flex flex-col items-center text-center">
+      <h1 class="text-6xl font-bold text-gray-700 dark:text-white">
+        नशा मुक्ति केंद्र
+      </h1>
+      <p
+        class="mt-10 text-lg font-light text-gray-700 dark:text-gray-200 max-w-3xl mx-auto"
+      >
+        अनमोल जीवन फाउंडेशन एक गैर-लाभकारी संगठन है जो प्रदान करता है
+        नशीली दवाओं और शराब की लत के लिए उपचार और पुनर्वास सेवाएँ।
+      </p>
+      <div class="mt-32">
+        <BtnLink
+          text="Book Appointment"
+          href="#cta"
+          className="w-full mb-10 lg:w-auto flex justify-center items-center gap-2 font-medium "
+          variant="primary"
+        >
+          Book Appointment
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"
+              fill="currentColor"></path>
+          </svg>
+        </BtnLink>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  /* Updated animation to make images more visible */
+  @keyframes slideShow {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 0.7;
+    } /* Increased opacity for better visibility */
+    45% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .slide-image {
+    opacity: 0;
+    animation: slideShow 15s infinite; /* Increased duration for slower transitions */
+  }
+
+  .slide-image:nth-child(2) {
+    animation-delay: 5s;
+  }
+
+  .slide-image:nth-child(3) {
+    animation-delay: 10s;
+  }
+</style>
+<style>
+  @keyframes slideShow {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    45% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .slide-image {
+    opacity: 0;
+    animation: slideShow 5s infinite;
+  }
+
+  .slide-image:nth-child(2) {
+    animation-delay: 5s;
+  }
+
+  .slide-image:nth-child(3) {
+    animation-delay: 10s;
+  }
+
+  .slide-image:nth-child(4) {
+    animation-delay: 15s;
+  }
+</style>

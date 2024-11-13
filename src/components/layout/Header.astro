@@ -1,0 +1,64 @@
+---
+import { AnimatedBanner } from "@/components/shared/AnimatedBanner";
+---
+
+<header
+  id="announcement-banner"
+  class="mt-0 relative overflow-hidden bg-gradient-to-r from-background-gradient-from to-background-gradient-to text-text-color"
+>
+  <div class="absolute inset-0 overflow-hidden">
+
+    <AnimatedBanner client:load />
+  </div>
+  <div class="max-w-7xl mx-auto px-4 text-center"></div>
+  <div
+    class="relative flex min-h-[44px] w-screen items-center justify-between bg-[#2DF8C5]/80 text-[#013437] md:items-center md:justify-between md:gap-6 md:py-0 md:text-center md:text-[18px]
+    before:absolute before:inset-0 before:-z-[1]
+    before:bg-[linear-gradient(90deg,#488cfb,#29dbbc,#ddf505,#ff9f0e,#e440bb,#655adc,#488cfb)]
+    before:bg-[length:200%_auto] before:animate-borderAnimation"
+  >
+    <div
+      class="max-w-7xl mx-auto px-4 text-center font-rubik text-[18px] flex items-center justify-center w-full"
+    >
+      <p>
+        निःशुल्क परामर्श प्राप्त करें &nbsp;<a href="tel:+918285362996"><strong
+          class="underline animate-blink justify-around">Call Now</strong
+        ></a>
+      </p>
+    </div>
+    <button
+      class="hover:opacity-75 transition-opacity"
+      aria-label="Close banner"
+      onclick="document.getElementById('announcement-banner').style.display = 'none'"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<style>
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  .animate-blink {
+    animation: blink 2s infinite;
+    animation-delay: 4s;
+  }
+</style>

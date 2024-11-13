@@ -11,3 +11,24 @@
 
 
 <!-- ====== Back To Top End -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTop = document.getElementById("backToTop");
+    
+    if (backToTop) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          backToTop.classList.remove('hidden');
+          backToTop.classList.add('flex');
+        } else {
+          backToTop.classList.remove('flex');
+          backToTop.classList.add('hidden');
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  });
+</script>

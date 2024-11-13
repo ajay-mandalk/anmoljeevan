@@ -19,10 +19,7 @@ const navItems = [
         href: "#features",
         text: "Features"
     },
-    {
-        href: "/DashBoard",
-        text: "Dashboard"
-    }
+
 ];
 ---
 
@@ -108,9 +105,7 @@ const navItems = [
                transition-transform duration-300 ease-in-out
                lg:flex lg:items-center lg:justify-end;
     }
-    .nav-hidden {
-        @apply -translate-y-full;
-    }
+
     .nav-wrapper.show {
         @apply translate-x-0;
     }
@@ -180,7 +175,6 @@ const navItems = [
 
     // Handle scroll behavior
     let lastScroll = 0;
-    const scrollThreshold = 100;
     window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY;
         
@@ -188,8 +182,6 @@ const navItems = [
             navbar?.classList.remove('nav-hidden');
             return;
         }
-                // Only trigger if scroll difference is greater than threshold
-                if (Math.abs(currentScroll - lastScroll) < scrollThreshold) return;
         
         if (currentScroll > lastScroll && !navbar?.classList.contains('nav-hidden')) {
             navbar?.classList.add('nav-hidden');

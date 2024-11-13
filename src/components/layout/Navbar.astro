@@ -4,32 +4,34 @@ import Container from "../shared/Container.astro";
 
 const navItems = [
     {
-        href: "/#",
+        href: "/",
         text: "Home"
     },
-
     {
-        href: "#Treatment",
-        text: "Treatment"
+        href: "#services",
+        text: "Services"
     },
     {
-        href: "#about",
-        text: "About Us" 
+        href: "#about-us", 
+        text: "About us"
     },
     {
-        href: "#FAQs", 
-        text: "FAQs"
+        href: "#features",
+        text: "Features"
     },
+    {
+        href: "/DashBoard",
+        text: "Dashboard"
+    }
 ];
 ---
 
-<header class="sticky top-0 w-full z-50 transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800" id="navbar">
+<header class="sticky top-0 w-full z-50 transition-all duration-300" id="navbar">
     <Container>
         <nav class="flex items-center justify-between h-16 lg:h-20 gap-6">
-            <a href="/" class="flex items-center gap-2">
-                <span class="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#488cfb] to-[#29dbbc] bg-clip-text text-transparent">
-                    Anmol Jeevan Foundation
-                </span>
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-all" aria-label="Anmol Jeevan Foundation">
+                <span class="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#488cfb] to-[#29dbbc] bg-clip-text text-transparent">Anmol Jeevan Foundation</span>
             </a>
 
             <!-- Navigation Menu -->
@@ -54,7 +56,7 @@ const navItems = [
                         className="w-full lg:w-auto flex justify-center items-center gap-2 font-medium  text-white hover:opacity-90 transition-opacity"
                         variant="primary"
                     >
-                        Book Appointment
+                    Book Appointment
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
                             <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" fill="currentColor"/>
                         </svg>
@@ -97,14 +99,14 @@ const navItems = [
 </header>
 
 <style>
+        /* Add this new style for navbar hide/show animation */
     .nav-wrapper {
         @apply fixed lg:static top-[64px] left-0 w-full h-[calc(100vh-64px)] lg:h-auto
                bg-white dark:bg-gray-900 lg:bg-transparent
                p-6 lg:p-0
                transform translate-x-full lg:translate-x-0
                transition-transform duration-300 ease-in-out
-               lg:flex lg:items-center lg:justify-end
-               shadow-2xl lg:shadow-none;
+               lg:flex lg:items-center lg:justify-end;
     }
 
     .nav-wrapper.show {
@@ -113,7 +115,7 @@ const navItems = [
 
     .nav-link::after {
         content: '';
-        @apply absolute left-0 right-0 bottom-0 h-0.5 bg-gradient-to-r from-[#488cfb] to-[#29dbbc]
+        @apply absolute left-0 right-0 bottom-0 h-0.5 bg-lime-400
                transform scale-x-0 origin-right transition-transform duration-300;
     }
 
@@ -125,89 +127,99 @@ const navItems = [
         @apply p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 
         transition-colors duration-200;
     }
-
     .hamburger-btn {
         @apply p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800
                transition-colors duration-200;
-    }
-
-    /* Add nav hide animation */
-    .nav-hidden {
-        transform: translateY(-100%);
-    }
-
-    #navbar {
-        transition: transform 0.3s ease-in-out;
     }
 </style>
 
 <script>
     const navbar = document.getElementById('navbar');
+    const themeToggleBtn = document.querySelector('[data-switch-theme]');
     const navWrapper = document.querySelector('[data-navbar]');
     const toggleBtn = document.querySelector('[data-toggle-nav]');
-    const themeToggleBtn = document.querySelector('[data-switch-theme]');
     let isNavOpen = false;
 
     // Handle mobile navigation
     function toggleMobileNav() {
-        if (!navWrapper || !toggleBtn) return;
+        if (!navWrapper  || !toggleBtn) return;
         
         isNavOpen = !isNavOpen;
         navWrapper.classList.toggle('show');
         toggleBtn.setAttribute('aria-expanded', isNavOpen.toString());
         
-        // Toggle hamburger icon
-        const icons = toggleBtn.querySelectorAll('svg');
-        icons.forEach(icon => icon.classList.toggle('hidden'));
-        
         // Prevent body scroll when nav is open
         document.body.style.overflow = isNavOpen ? 'hidden' : '';
+
+                      // Toggle hamburger icon
+                      const icons = toggleBtn.querySelectorAll('svg');
+        icons.forEach(icon => icon.classList.toggle('hidden'));
     }
 
-    // Handle theme toggle
-    function toggleTheme() {
+     // Handle theme toggle
+     function toggleTheme() {
         const isDark = document.documentElement.classList.toggle('dark');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
 
-    // Initialize theme
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    // Close mobile nav
+    function closeMobileNav() {
+        if (isNavOpen) {
+            isNavOpen = false;
+            navWrapper?.classList.remove('show');
+            toggleBtn?.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    }
+        // Initialize theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
     }
 
     // Event Listeners
     toggleBtn?.addEventListener('click', toggleMobileNav);
-    themeToggleBtn?.addEventListener('click', toggleTheme);
-    
+ 
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            if (isNavOpen) toggleMobileNav();
-        });
+        link.addEventListener('click', closeMobileNav);
     });
-
+    // Event Listeners
+    toggleBtn?.addEventListener('click', toggleMobileNav);
+    themeToggleBtn?.addEventListener('click', toggleTheme);
     // Handle window resize
     window.addEventListener('resize', () => {
-        if (window.innerWidth >= 1024 && isNavOpen) {
-            toggleMobileNav();
+        if (window.innerWidth >= 1024) {
+            closeMobileNav();
         }
     });
 
-    // Handle scroll behavior
-    let lastScroll = 0;
+ // Enhanced scroll behavior
+ let lastScroll = window.scrollY;
+    const scrollThreshold = 50;
+    let isScrolling = false;
+    
     window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        
-        if (currentScroll <= 0) {
-            navbar?.classList.remove('nav-hidden');
-            return;
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                const currentScroll = window.scrollY;
+                
+                // Don't hide navbar if mobile menu is open
+                if (isNavOpen) return;
+                
+                // Always show navbar when at the top
+                if (currentScroll <= 0) {
+                    navbar?.classList.remove('nav-hidden');
+                } 
+                // Hide navbar when scrolling down, show when scrolling up
+                else if (currentScroll > lastScroll && !navbar?.classList.contains('nav-hidden')) {
+                    navbar?.classList.add('nav-hidden');
+                } else if (currentScroll < lastScroll && navbar?.classList.contains('nav-hidden')) {
+                    navbar?.classList.remove('nav-hidden');
+                }
+                
+                lastScroll = currentScroll;
+                isScrolling = false;
+            });
         }
-        
-        if (currentScroll > lastScroll && !navbar?.classList.contains('nav-hidden')) {
-            navbar?.classList.add('nav-hidden');
-        } else if (currentScroll < lastScroll && navbar?.classList.contains('nav-hidden')) {
-            navbar?.classList.remove('nav-hidden');
-        }
-        
-        lastScroll = currentScroll;
-    });
+        isScrolling = true;
+    }, { passive: true });
 </script>

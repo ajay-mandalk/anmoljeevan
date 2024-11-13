@@ -8,31 +8,25 @@ const navItems = [
         text: "Home"
     },
     {
-        href: "#about-us",
-        text: "About Us"
+        href: "#services",
+        text: "Services"
     },
     {
-        href: "#center", 
-        text: "Center"
+        href: "#about-us", 
+        text: "About us"
     },
     {
-        href: "#treatment",
-        text: "Treatment"
+        href: "#features",
+        text: "Features"
     },
     {
-        href: "#gallery",
-        text: "Gallery"
-    },
-    {
-        href: "#contact",
-        text: "Contact"
+        href: "/DashBoard",
+        text: "Dashboard"
     }
 ];
-
-const { title } = Astro.props;
 ---
 
-<header class="sticky top-0 w-full z-50 transition-all duration-300 translate-y-0" id="navbar">
+<header class="sticky top-0 w-full z-50 transition-all duration-300" id="navbar">
     <Container>
         <nav class="flex items-center justify-between h-16 lg:h-20 gap-6">
             <!-- Logo -->
@@ -40,7 +34,7 @@ const { title } = Astro.props;
                 <div class="w-8 h-8 relative rounded-xl bg-gradient-to-br from-green-500 via-primary to-[#FCDC58]">
                     <span class="absolute w-2.5 h-2.5 rounded-full bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></span>
                 </div>
-                <span class="text-lg lg:text-xl font-bold text-heading-1">{title}</span>
+                <span class="text-lg lg:text-xl font-bold text-heading-1">AgroFly Solutions</span>
             </a>
 
             <!-- Navigation Menu -->
@@ -60,12 +54,12 @@ const { title } = Astro.props;
 
                 <div class="mt-6 lg:mt-0 lg:ml-6">
                     <BtnLink 
-                        text="Book Appointment"
+                        text="Get Started"
                         href="#cta"
                         className="w-full lg:w-auto flex justify-center items-center gap-2 font-medium"
                         variant="primary"
                     >
-                        Book Appointment
+                        Get Started
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
                             <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" fill="currentColor"/>
                         </svg>
@@ -106,9 +100,6 @@ const { title } = Astro.props;
 </header>
 
 <style>
-    .nav-hidden {
-        @apply -translate-y-full;
-    }
     .nav-wrapper {
         @apply fixed lg:static top-[64px] left-0 w-full h-[calc(100vh-64px)] lg:h-auto
                bg-white dark:bg-gray-900 lg:bg-transparent
@@ -184,28 +175,15 @@ const { title } = Astro.props;
             closeMobileNav();
         }
     });
-        // Handle scroll behavior
-        let lastScroll = 0;
-    const scrollThreshold = 100; // Add a threshold to prevent tiny scroll triggers
 
-
+    // Handle scroll behavior
+    let lastScroll = 0;
     window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY;
         
         if (currentScroll <= 0) {
             navbar?.classList.remove('nav-hidden');
             return;
-        }
-        // Only trigger if scroll difference is greater than threshold
-        if (Math.abs(currentScroll - lastScroll) < scrollThreshold) return;
-
-                // Hide on scroll down
-                if (currentScroll > lastScroll) {
-            navbar?.classList.add('nav-hidden');
-        } 
-        // Show on scroll up
-        else {
-            navbar?.classList.remove('nav-hidden');
         }
         
         if (currentScroll > lastScroll && !navbar?.classList.contains('nav-hidden')) {

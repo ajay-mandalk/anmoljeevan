@@ -1,0 +1,104 @@
+---
+interface Testimonial {
+  name: string;
+  role: string;
+  content: string;
+  image: string;
+}
+
+interface Program {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const programs: Program[] = [
+  {
+    title: "Physical Therapy",
+    description:
+      "Comprehensive rehabilitation programs tailored to your recovery goals.",
+    icon: "🏃‍♂️",
+  },
+  {
+    title: "Occupational Therapy",
+    description: "Helping you regain independence in daily activities.",
+    icon: "🛠️",
+  },
+  {
+    title: "Speech Therapy",
+    description: "Expert care for communication and swallowing disorders.",
+    icon: "🗣️",
+  },
+  {
+    title: "Mental Health Support",
+    description: "Holistic approach to emotional and psychological well-being.",
+    icon: "🧠",
+  },
+];
+---
+
+<section class="max-w-7xl mx-auto p-8">
+  <div
+    class="text-center py-16 bg-gradient-to-r from-[#00ff00] to-gray-900 rounded-lg mb-12"
+  >
+  <div class="text-center">
+    <h1 class="text-4xl font-bold text-white mb-6 leading-tight">
+      <span class="block">मेरा ठीक होना सबसे पहले होना चाहिए</span>
+  
+      <span class="block text-3xl mt-4 text-gray-200">
+        ताकि जीवन में जो कुछ भी मुझे पसंद है
+      </span>
+      <span class="block text-3xl text-gray-200">
+        वह आखिरी में न आए
+      </span>
+    </h1>
+    <p class="text-xl text-gray-300 italic">- गुमनाम</p>
+  </div>
+  </div>
+
+  <div class="mb-16">
+    <h2
+      class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8"
+    >
+      See Our Rehab Center View
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="relative overflow-hidden rounded-lg">
+        <img
+          src="/Rehab/Rehab1.jpeg"
+          alt="RehabShocase"
+          class="w-full h-64 object-cover transition-transform transform hover:scale-105"
+        />
+        <h2
+          class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 text-center"
+        >
+          सब कुछ उत्तम है और सुधार की गुंजाइश हमेशा बनी रहती है।
+        </h2>
+      </div>
+      <div class="relative overflow-hidden rounded-lg">
+        <img
+          src="/Rehab/Rehab2.jpeg"
+          alt="RehabShocase"
+          class="w-full h-64 object-cover transition-transform transform hover:scale-105"
+        />
+        <h2
+          class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 text-center"
+        >
+          पूर्णता के बजाय निरंतर सुधार का प्रयास करें।
+        </h2>
+      </div>
+      <div class="relative overflow-hidden rounded-lg">
+        <img
+          src="/Rehab/Rehab3.jpeg"
+          alt="RehabShocase"
+          class="w-full h-64 object-cover transition-transform transform hover:scale-105"
+        />
+        <h2
+          class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 text-center"
+        >
+          सुधार के बिना अभ्यास निरर्थक है।
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>

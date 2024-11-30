@@ -51,20 +51,96 @@ export default {
     				'5': 'hsl(var(--chart-5))'
     			}
     		},
-
-					      // Add keyframes and animation here, at the same level as colors
-						  keyframes: {
-							borderAnimation: {
-							  '0%': { backgroundPosition: '0% 50%' },
-							  '50%': { backgroundPosition: '100% 50%' },
-							  '100%': { backgroundPosition: '0% 50%' }
-							}
-						  },
-						  animation: {
-							'borderAnimation': 'borderAnimation 3s ease infinite'
-						  },
-
-						  
+    		keyframes: {
+    			borderAnimation: {
+    				'0%': {
+    					backgroundPosition: '0% 50%'
+    				},
+    				'50%': {
+    					backgroundPosition: '100% 50%'
+    				},
+    				'100%': {
+    					backgroundPosition: '0% 50%'
+    				}
+    			},
+    			marquee: {
+    				from: {
+    					transform: 'translateX(0)'
+    				},
+    				to: {
+    					transform: 'translateX(calc(-100% - var(--gap)))'
+    				}
+    			},
+    			'marquee-vertical': {
+    				from: {
+    					transform: 'translateY(0)'
+    				},
+    				to: {
+    					transform: 'translateY(calc(-100% - var(--gap)))'
+    				}
+    			},
+    			'border-beam': {
+    				'100%': {
+    					'offset-distance': '100%'
+    				}
+    			},
+    			shine: {
+    				'0%': {
+    					'background-position': '0% 0%'
+    				},
+    				'50%': {
+    					'background-position': '100% 100%'
+    				},
+    				to: {
+    					'background-position': '0% 0%'
+    				}
+    			},
+    			meteor: {
+    				'0%': {
+    					transform: 'rotate(215deg) translateX(0)',
+    					opacity: '1'
+    				},
+    				'70%': {
+    					opacity: '1'
+    				},
+    				'100%': {
+    					transform: 'rotate(215deg) translateX(-500px)',
+    					opacity: '0'
+    				}
+    			},
+    			gradient: {
+    				to: {
+    					backgroundPosition: 'var(--bg-size) 0'
+    				}
+    			},
+    			grid: {
+    				'0%': {
+    					transform: 'translateY(-50%)'
+    				},
+    				'100%': {
+    					transform: 'translateY(0)'
+    				}
+    			},
+    			ripple: {
+    				'0%, 100%': {
+    					transform: 'translate(-50%, -50%) scale(1)'
+    				},
+    				'50%': {
+    					transform: 'translate(-50%, -50%) scale(0.9)'
+    				}
+    			}
+    		},
+    		animation: {
+    			borderAnimation: 'borderAnimation 3s ease infinite',
+    			marquee: 'marquee var(--duration) infinite linear',
+    			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
+    			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
+    			shine: 'shine var(--duration) infinite linear',
+    			meteor: 'meteor 5s linear infinite',
+    			gradient: 'gradient 8s linear infinite',
+    			grid: 'grid 15s linear infinite',
+    			ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite'
+    		}
     	}
     },
 	plugins: [require("tailwindcss-animate")],

@@ -16,6 +16,22 @@ export default defineConfig({
   integrations: [tailwind({
     applyBaseStyles: false,
   }), react(), sitemap(), mdx()],
+  site: "https://www.anmoljeevanfoundation.org",
   output: 'server',
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    speedInsights: {
+      enabled: true,
+    },
+    imageService: true,
+    // @ts-ignore
+    devMode: false,
+    functionPerRoute: false,
+    edgeMiddleware: false,
+    imageConfig: {
+      domains: [],
+    },
+  }),
 });

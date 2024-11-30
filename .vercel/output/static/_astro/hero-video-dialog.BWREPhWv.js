@@ -1,0 +1,39 @@
+import{j as s}from"./jsx-runtime.7faW4zRM.js";import{r as t}from"./index.DhYZZe0J.js";import{c as $}from"./utils._qghvgfj.js";import{M as I,u as R,P as V,a as A,L as S,m as j}from"./proxy.D9LHLTT8.js";class B extends t.Component{getSnapshotBeforeUpdate(n){const e=this.props.childRef.current;if(e&&n.isPresent&&!this.props.isPresent){const i=this.props.sizeRef.current;i.height=e.offsetHeight||0,i.width=e.offsetWidth||0,i.top=e.offsetTop,i.left=e.offsetLeft}return null}componentDidUpdate(){}render(){return this.props.children}}function O({children:r,isPresent:n}){const e=t.useId(),i=t.useRef(null),c=t.useRef({width:0,height:0,top:0,left:0}),{nonce:a}=t.useContext(I);return t.useInsertionEffect(()=>{const{width:d,height:o,top:f,left:m}=c.current;if(n||!i.current||!d||!o)return;i.current.dataset.motionPopId=e;const u=document.createElement("style");return a&&(u.nonce=a),document.head.appendChild(u),u.sheet&&u.sheet.insertRule(`
+          [data-motion-pop-id="${e}"] {
+            position: absolute !important;
+            width: ${d}px !important;
+            height: ${o}px !important;
+            top: ${f}px !important;
+            left: ${m}px !important;
+          }
+        `),()=>{document.head.removeChild(u)}},[n]),s.jsx(B,{isPresent:n,childRef:i,sizeRef:c,children:t.cloneElement(r,{ref:i})})}const D=({children:r,initial:n,isPresent:e,onExitComplete:i,custom:c,presenceAffectsLayout:a,mode:d})=>{const o=R(K),f=t.useId(),m=t.useCallback(p=>{o.set(p,!0);for(const g of o.values())if(!g)return;i&&i()},[o,i]),u=t.useMemo(()=>({id:f,initial:n,isPresent:e,custom:c,onExitComplete:m,register:p=>(o.set(p,!1),()=>o.delete(p))}),a?[Math.random(),m]:[e,m]);return t.useMemo(()=>{o.forEach((p,g)=>o.set(g,!1))},[e]),t.useEffect(()=>{!e&&!o.size&&i&&i()},[e]),d==="popLayout"&&(r=s.jsx(O,{isPresent:e,children:r})),s.jsx(V.Provider,{value:u,children:r})};function K(){return new Map}const b=r=>r.key||"";function N(r){const n=[];return t.Children.forEach(r,e=>{t.isValidElement(e)&&n.push(e)}),n}const F=({children:r,exitBeforeEnter:n,custom:e,initial:i=!0,onExitComplete:c,presenceAffectsLayout:a=!0,mode:d="sync"})=>{const o=t.useMemo(()=>N(r),[r]),f=o.map(b),m=t.useRef(!0),u=t.useRef(o),p=R(()=>new Map),[g,L]=t.useState(o),[x,k]=t.useState(o);A(()=>{m.current=!1,u.current=o;for(let h=0;h<x.length;h++){const l=b(x[h]);f.includes(l)?p.delete(l):p.get(l)!==!0&&p.set(l,!1)}},[x,f.length,f.join("-")]);const w=[];if(o!==g){let h=[...o];for(let l=0;l<x.length;l++){const y=x[l],v=b(y);f.includes(v)||(h.splice(l,0,y),w.push(y))}d==="wait"&&w.length&&(h=w),k(N(h)),L(o);return}const{forceRender:C}=t.useContext(S);return s.jsx(s.Fragment,{children:x.map(h=>{const l=b(h),y=o===x||f.includes(l),v=()=>{if(p.has(l))p.set(l,!0);else return;let E=!0;p.forEach(P=>{P||(E=!1)}),E&&(C?.(),k(u.current),c&&c())};return s.jsx(D,{isPresent:y,initial:!m.current||i?void 0:!1,custom:y?void 0:e,presenceAffectsLayout:a,mode:d,onExitComplete:y?void 0:v,children:h},l)})})};/**
+ * @license lucide-react v0.456.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const H=r=>r.replace(/([a-z0-9])([A-Z])/g,"$1-$2").toLowerCase(),z=(...r)=>r.filter((n,e,i)=>!!n&&n.trim()!==""&&i.indexOf(n)===e).join(" ").trim();/**
+ * @license lucide-react v0.456.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var U={xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"};/**
+ * @license lucide-react v0.456.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const W=t.forwardRef(({color:r="currentColor",size:n=24,strokeWidth:e=2,absoluteStrokeWidth:i,className:c="",children:a,iconNode:d,...o},f)=>t.createElement("svg",{ref:f,...U,width:n,height:n,stroke:r,strokeWidth:i?Number(e)*24/Number(n):e,className:z("lucide",c),...o},[...d.map(([m,u])=>t.createElement(m,u)),...Array.isArray(a)?a:[a]]));/**
+ * @license lucide-react v0.456.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const M=(r,n)=>{const e=t.forwardRef(({className:i,...c},a)=>t.createElement(W,{ref:a,iconNode:n,className:z(`lucide-${H(r)}`,i),...c}));return e.displayName=`${r}`,e};/**
+ * @license lucide-react v0.456.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const X=M("Play",[["polygon",{points:"6 3 20 12 6 21 6 3",key:"1oa8hb"}]]);/**
+ * @license lucide-react v0.456.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const G=M("X",[["path",{d:"M18 6 6 18",key:"1bl5f8"}],["path",{d:"m6 6 12 12",key:"d8bk6v"}]]),T={"from-bottom":{initial:{y:"100%",opacity:0},animate:{y:0,opacity:1},exit:{y:"100%",opacity:0}},"from-center":{initial:{scale:.5,opacity:0},animate:{scale:1,opacity:1},exit:{scale:.5,opacity:0}},"from-top":{initial:{y:"-100%",opacity:0},animate:{y:0,opacity:1},exit:{y:"-100%",opacity:0}},"from-left":{initial:{x:"-100%",opacity:0},animate:{x:0,opacity:1},exit:{x:"-100%",opacity:0}},"from-right":{initial:{x:"100%",opacity:0},animate:{x:0,opacity:1},exit:{x:"100%",opacity:0}},fade:{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0}},"top-in-bottom-out":{initial:{y:"-100%",opacity:0},animate:{y:0,opacity:1},exit:{y:"100%",opacity:0}},"left-in-right-out":{initial:{x:"-100%",opacity:0},animate:{x:0,opacity:1},exit:{x:"100%",opacity:0}}},Q=({animationStyle:r="from-center",videoSrc:n,thumbnailSrc:e,thumbnailAlt:i="Video thumbnail",className:c})=>{const[a,d]=t.useState(!1),o=T[r];return s.jsxs("div",{className:$("relative",c),children:[s.jsxs("div",{className:"relative cursor-pointer group",onClick:()=>d(!0),children:[s.jsx("img",{src:e,alt:i,width:1920,height:1080,className:"w-full transition-all duration-200 group-hover:brightness-[0.8] ease-out rounded-md shadow-lg border"}),s.jsx("div",{className:"absolute inset-0 flex items-center justify-center group-hover:scale-100 scale-[0.9] transition-all duration-200 ease-out rounded-2xl",children:s.jsx("div",{className:"bg-primary/10 flex items-center justify-center rounded-full backdrop-blur-md size-28",children:s.jsx("div",{className:"flex items-center justify-center bg-gradient-to-r from-purple-500 to-blue-500 shadow-md rounded-full size-20 transition-all ease-out duration-200 relative group-hover:scale-[1.2] scale-100",children:s.jsx(X,{className:"size-8 text-white fill-white group-hover:scale-105 scale-100 transition-transform duration-200 ease-out",style:{filter:"drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06))"}})})})})]}),s.jsx(F,{children:a&&s.jsx(j.div,{initial:{opacity:0},animate:{opacity:1},onClick:()=>d(!1),exit:{opacity:0},className:"fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md",children:s.jsxs(j.div,{...o,transition:{type:"spring",damping:30,stiffness:300},className:"relative w-full max-w-4xl aspect-video mx-4 md:mx-0",children:[s.jsx(j.button,{className:"absolute -top-16 right-0 text-white text-xl bg-neutral-900/50 ring-1 backdrop-blur-md rounded-full p-2 dark:bg-neutral-100/50 dark:text-black",children:s.jsx(G,{className:"size-5"})}),s.jsx("div",{className:"size-full border-2 border-white rounded-2xl overflow-hidden isolate z-[1] relative",children:s.jsx("iframe",{src:n,title:"Video player",className:"size-full rounded-2xl",allowFullScreen:!0,allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"})})]})})})]})};export{Q as default};

